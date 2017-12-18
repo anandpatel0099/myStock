@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+<f:metadata>
+  <f:event type="preRenderView" listener="#{clientController.loadClient()}"/>
+</f:metadata>
+<h:messages globalOnly="true" />
+    <head> 
+    	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script type="text/javascript" src="scripts/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript"/>
+ <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"></link>
+
+        <!-- Custom styles for this template -->
+        <link rel="stylesheet" href="css/style.css" ></link>     
+        <title>Welcome Page client</title>
+    </head>
+    <body>
+    <div id="container">
+   
+     
+        <p>Login Successful! #{clientReg.username}</p>
+        
+        <div id="wrapper">
+		<div id="header">
+			<h2>approve</h2>
+		</div>
+	</div>
+
+	<div id="container">
+
+		<div id="content">
+		
+			<h:messages globalOnly="true" />
+		
+						
+
+			<h:form>
+						 			<h:dataTable value="#{clientController.client}" var="tempClient" border="1"
+				styleClass="demo-table" 
+				headerClass="demo-table-header"
+				rowClasses="demo-table-odd-row,demo-table-even-row">
+
+				<h:column>
+					
+				<f:facet name="header">First Name</f:facet>
+
+				
+					#{tempClient.firstName}
+				</h:column>
+
+				<h:column>
+					
+					<f:facet name="header">Last Name</f:facet>
+
+					
+					#{tempClient.lastName}
+				</h:column>
+
+				<h:column>
+					
+					<f:facet name="header">Email</f:facet>
+
+					
+					#{tempClient.email}
+				</h:column>
+				
+				<h:column>
+					
+					<f:facet name="header">Approve/Reject</f:facet>
+
+				
+					#{tempClient.flag}
+				</h:column>
+<p>Login Successful! #{clientReg.username}</p>
+>
+				<h:column>
+					<!-- the column header -->
+					<f:facet name="header">Action</f:facet>
+
+					<!--  the value for each row -->
+					<h:commandLink value="Select"
+						action="#{clientController.selectManager(tempClient.id, clientReg.username)}"/>
+					
+				</h:column>
+				
+
+			</h:dataTable>
+<div>
+<ul>
+                      <li>
+                         <a href = "clientHome.xhtml"> Back</a>
+                      </li>
+                  </ul>
+                  </div>
+			</h:form>
+
+		</div>
+		
+	</div>
+       
+			<h:form>
+						 <div>
+                 <h:commandButton value="logout" styleClass="save" action="#{clientReg.logout}" outcome="login"/>
+       </div>  </h:form>
+        
+	</div> 
+	   
+    </body>
+</html>

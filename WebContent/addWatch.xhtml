@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+
+<h:messages globalOnly="true" />
+    <head>      
+        <title>create watchlist client</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"></link>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script type="text/javascript" src="scripts/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript"/>
+ <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"></link>
+
+        <!-- Custom styles for this template -->
+        <link rel="stylesheet" href="css/style.css" ></link>
+        <!-- Custom styles for this template -->
+        <link rel="stylesheet" href="css/style.css" ></link>
+    </head>
+    <body>
+    
+	<div class="well">
+                <legend>Search Data</legend>
+ <h:form>
+    <div id="container">
+
+     
+        <p>Login Successful! #{clientReg.username}</p>
+        
+                 
+         <div>
+                 <h:commandButton value="logout" styleClass="save" action="#{clientReg.logout}" outcome="login"/>
+        
+        
+	</div> </div></h:form>
+                <div class="row">
+
+                    <h:form>
+                        <label for="sel1">Stock: </label>
+                        <h:selectOneMenu id="symbol" value="#{stockApiBean.selectedSymbol}">
+                            <f:selectItems value="#{stockApiBean.availableSymbols}" />
+                        </h:selectOneMenu>
+
+                       
+                        <h:commandButton value="addWatch" action="#{stockApiBean.timeseries}" styleClass="btn btn-success" />
+                        
+                    </h:form>
+                </div>
+
+            </div>
+  
+    </body>
+</html>

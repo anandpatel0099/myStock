@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+
+<h:messages globalOnly="true" />
+    <head>      
+    
+    	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script type="text/javascript" src="scripts/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript"/>
+ <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"></link>
+
+        <!-- Custom styles for this template -->
+        <link rel="stylesheet" href="css/style.css" ></link>
+        <title>Welcome Page Manger</title>
+    </head>
+    <body>
+    <h:form>
+    <div id="container">
+   
+     
+        <p>Login Successful! #{clientReg.username}</p>
+        <ul>
+         <li>
+                        <a href="managerPurchase.xhtml">Purchase stock</a>
+                      </li>
+                      <li>
+                        <a href="historyAndAccount">History and Account</a>
+                      </li>
+                      
+                       <li>
+         <h:commandLink value="Update Account" action="#{clientController.loadClient(clientReg.username)}"/>
+         </li><li>
+         <a href="addWatch.xhtml">Create watch list</a></li>
+        </ul>
+       
+         <div>
+                 <h:commandButton value="logout" styleClass="save" action="#{clientReg.logout}" outcome="login"/>
+        
+        
+        
+        
+	</div> 
+	</div>
+	</h:form>    
+    </body>
+    
+</html>
