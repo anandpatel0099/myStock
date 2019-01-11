@@ -34,7 +34,7 @@ import com.mysql.jdbc.PreparedStatement;
 
 @ManagedBean
 @SessionScoped
-public class StockApiBean {
+public class ReqStockHist {
 
     private static final long serialVersionUID = 1L;
     static final String API_KEY = "AF93E6L5I01EA39O";
@@ -187,13 +187,7 @@ public class StockApiBean {
 
     public String createDbRecord(String username, String symbol, double price, int qty, double amt) {
         try {
-<<<<<<< HEAD
-            //System.out.println("symbol: " + this.symbol + ", price: " + this.price + "\n");
-            //System.out.println("qty: " + this.qty + ", amt: " + this.amt + "\n");
-        	Connection myConn = null;
-=======
             Connection myConn = null;
->>>>>>> new update commit
         	 conn = DataConnection.getConnection();
         	 System.out.println("in stock api");
            Statement statement = conn.createStatement();
@@ -203,22 +197,7 @@ public class StockApiBean {
             myConn = DataConnection.getConnection();
            
             System.out.println("in stock api");
-<<<<<<< HEAD
-            
-            //ClientReg client =new ClientReg();
-        	//client.getId();
-        	//client.getUsername();
-        	//int id=client.getId();
-            //String uname=client.getUsername();
-          
-           // System.out.println("in stock api user name is " +uname);
-            
-            //System.out.println(id);
-           
-			System.out.println("username:" +username);
-=======
             System.out.println("username:" +username);
->>>>>>> new update commit
             System.out.println("symbol:" + symbol);
             System.out.println("price:" + price);
             System.out.println("qty:" + qty);
@@ -230,23 +209,6 @@ public class StockApiBean {
             Double balance = rs.getDouble(1);
             System.out.println("balance login " +balance);
             
-<<<<<<< HEAD
-            
-            myStmt2 = myConn.prepareStatement("select user_name, stock_symbol from stock");
-            
-           ResultSet rs2 = myStmt2.executeQuery();
-         rs2.next();
-        	 
-        	 
-             
-             System.out.println("balance login " +balance);
-          String stockUser=rs2.getString(1);
-          String stock_symbol2=rs2.getString(2);
-          
-          System.out.println("user name stock api" +stockUser);
-          System.out.println("symbolstock api" +stock_symbol2);
-=======
->>>>>>> new update commit
            System.out.println("balance of stock api" +balance);
            Double accountBalance=balance-amt;
            System.out.println("AccBalance of stock api" +accountBalance);
@@ -255,65 +217,6 @@ public class StockApiBean {
             
             if(balance>= amt){
             
-<<<<<<< HEAD
-            	statement.executeUpdate("INSERT INTO `stock` ( `user_name`, `stock_symbol`, `qty`, `price`, `amt`, `accountBalance`) "
-                        + "VALUES ('" + username + "','" + symbol + "','" + qty + "','" + price + "','" + amt +"','" + accountBalance + "')");
-           	statement.executeUpdate("update login "
-					+ " set balance='" + accountBalance + "'"
-					+ " where user_name='" + username + "'");
-           	statement.executeUpdate("INSERT INTO `history` ( `user_name`, `stock_symbol`, `qty`, `price`, `amt`, `accountBalance`, `purchasedBy`) "
-                    + "VALUES ('" + username + "','" + symbol + "','" + qty + "','" + price + "','" + amt +"','" + accountBalance + "','" + username + "')");
-            }
-            //statement.executeUpdate("update stock "
-    				//	+ " stock_symbol='" + symbol +"', qty='" + qty +"', price='" + price +"', amt='" + amt +"'"
-    					//+ " where user_name='" + username +"'";)
-//            java.sql.PreparedStatement stmt=conn.prepareStatement( 
-//            		"INSERT INTO stock (stock_symbol, qty, price, amt, user_name) VALUES ('?', '?', '?', '?', '?')");
-//            
-           // ("update `stock` (`id`, `uid`, `stock_symbol`, `qty`, `price`, `amt`) "
-               //     + "VALUES (NULL,'" + uid + "','" + symbol + "','" + qty + "','" + price + "','" + amt +"')");
-//            stmt.setString(1,symbol);    
-//               
-//            stmt.setInt(2,qty);
-//            stmt.setDouble(3, price); 
-//            stmt.setDouble(4,amt);    
-//            stmt.setString(5,username);    
-//            //stmt.setInt(6,u.getId());    
-//            stmt.executeUpdate();
-//    		
-//    		//statement.executeUpdate(sql);
-//             if(username!= null && !username.equals("")
-         /*   }
-           ?
-        		   else if(balance>= amt && stockUser.equals(username) && stock_symbol2.equals(symbol))
-            {
-            	  myStmt3 = myConn.prepareStatement("select qty from stock where user_name='" + username + "' and stock_symbol='" + stock_symbol2 + "'");
-            	  ResultSet rs3 = myStmt3.executeQuery();
-                  rs3.next();
-                 int oldQty = rs3.getInt(1);
-                  System.out.println("old qty--"+oldQty);
-                  int newQty = oldQty+qty;
-                  System.out.println("new qyt "+newQty);
-                  statement.executeUpdate("update stock "
-      					+ " set qty='" + newQty + "'"
-      					+ " where user_name='" + username + "' and stock_symbol='" + stock_symbol2 + "'");
-                  statement.executeUpdate("update login "
-      					+ " set balance='" + accountBalance + "'"
-      					+ " where user_name='" + username + "'");
-                  
-                  statement.executeUpdate("INSERT INTO `history` ( `user_name`, `stock_symbol`, `qty`, `price`, `amt`, `accountBalance`, `purchasedBy`) "
-                          + "VALUES ('" + username + "','" + symbol + "','" + qty + "','" + price + "','" + amt +"','" + accountBalance + "','" + username + "')");
-                 	
-                  
-            }
-            else if(balance>= amt && stockUser.equals(username) && !stock_symbol2.equals(symbol))
-            {
-            	
-            	System.out.println("againin stock api symblo different");
-            	statement.executeUpdate("INSERT INTO `stock` ( `user_name`, `stock_symbol`, `qty`, `price`, `amt`, `accountBalance`) "
-                        + "VALUES ('" + username + "','" + symbol + "','" + qty + "','" + price + "','" + amt +"','" + accountBalance + "')");
-           	statement.executeUpdate("update login "
-=======
     			String sql = "select * from stock where user_name=? and stock_symbol=?";
     			PreparedStatement myStmt1 = (PreparedStatement) myConn.prepareStatement(sql);
     			myStmt1.setString(1, username);
@@ -343,20 +246,12 @@ public class StockApiBean {
                         + "VALUES ('" + username + "','" + symbol + "','" + qty + "','" + price + "','" + amt +"','" + accountBalance + "')");
     			}
             	statement.executeUpdate("update login "
->>>>>>> new update commit
 					+ " set balance='" + accountBalance + "'"
 					+ " where user_name='" + username + "'");
            	statement.executeUpdate("INSERT INTO `history` ( `user_name`, `stock_symbol`, `qty`, `price`, `amt`, `accountBalance`, `purchasedBy`) "
                     + "VALUES ('" + username + "','" + symbol + "','" + qty + "','" + price + "','" + amt +"','" + accountBalance + "','" + username + "')");
-<<<<<<< HEAD
-                 	
-                  
-            } */
-            else  {
-=======
             }
                     else  {
->>>>>>> new update commit
             	 FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO, "invalid operation",""));
             	//return "invalid.xhtml";
                         
@@ -371,8 +266,6 @@ public class StockApiBean {
         return "purchase";
     }
 
-<<<<<<< HEAD
-=======
 
     public String sellStock(String username, String symbol, double price, int qty, double amt) {
         try {
@@ -438,7 +331,6 @@ public class StockApiBean {
     }
 
     
->>>>>>> new update commit
     public void installAllTrustingManager() {
         TrustManager[] trustAllCerts;
         trustAllCerts = new TrustManager[]{new X509TrustManager() {
@@ -510,19 +402,7 @@ public class StockApiBean {
                             + "<td>" + subJsonObj.getString("3. low") + "</td>"
                             + "<td>" + subJsonObj.getString("4. close") + "</td>"
                             + "<td>" + subJsonObj.getString("5. volume") + "</td>";
-                    if (i == 0) {
-                        String path = FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath();
-                        this.table2Markup += "<td><a class='btn btn-success' href='" + path + "/faces/purchase.xhtml?symbol=" + symbol + "&price=" + subJsonObj.getString("4. close") + "'>Buy Stock</a></td>";
-                    }
-<<<<<<< HEAD
-=======
-                    if(i==1)
-                    {
-                    	   String path = FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath();
-                           this.table2Markup += "<td><a class='btn btn-success' href='" + path + "/faces/sell.xhtml?symbol=" + symbol + "&price=" + subJsonObj.getString("4. close") + "'>Sell Stock</a></td>";
-                       	
-                    }
->>>>>>> new update commit
+                    
                     this.table2Markup += "</tr>";
                     i++;
                 }

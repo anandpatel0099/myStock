@@ -7,6 +7,16 @@
 	
 
 <h:head>
+<<<<<<< HEAD
+=======
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"></link>
+
+        <!-- Custom styles for this template -->
+        <link rel="stylesheet" href="css/style.css" ></link>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script type="text/javascript" src="scripts/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript"/>
+>>>>>>> new update commit
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -44,14 +54,22 @@
 			<h:panelGrid columns="3">
 			
 				
+<<<<<<< HEAD
 				<h:outputLabel>First name:</h:outputLabel> <h:inputText value="#{clientReg.firstName}" id="firstName" /> <h:message for="firstName" />
 	
 				
 				<h:outputLabel>Last name:</h:outputLabel> <h:inputText value="#{clientReg.lastName}" id="lastName" /> <h:message for="lastName" />
+=======
+				<h:outputLabel>First name:</h:outputLabel> <h:inputText value="#{clientReg.firstName}" id="firstName" /> <h:message for="firstName" styleClass="form-control"  />
+	
+				
+				<h:outputLabel>Last name:</h:outputLabel> <h:inputText value="#{clientReg.lastName}" id="lastName" /> <h:message for="lastName" styleClass="form-control" />
+>>>>>>> new update commit
 	
 				
 				<h:outputLabel>Email:</h:outputLabel> <h:inputText value="#{clientReg.email}" id="email" 
 									required="true"
+<<<<<<< HEAD
             							requiredMessage="Please enter email id."/> 	<h:message for="email" />
             	
             	<h:outputLabel>Username:</h:outputLabel> <h:inputText value="#{clientReg.username}" id="username" 
@@ -62,6 +80,18 @@
 									required="true"
             							requiredMessage="Please provide password."/> 	<h:message for="password" />
             	<h:outputLabel>Register as a:</h:outputLabel><h:selectOneMenu value="#{clientReg.role}" id="role">
+=======
+            							requiredMessage="Please enter email id."/> 	<h:message for="email" styleClass="form-control" />
+            	
+            	<h:outputLabel>Username:</h:outputLabel> <h:inputText value="#{clientReg.username}" id="username" 
+									required="true"
+            				requiredMessage="Please provide username" styleClass="form-control" /> 	<h:message for="username" />
+            	
+            	<h:outputLabel>password:</h:outputLabel> <h:inputSecret value="#{clientReg.password}" id="password" 
+									required="true"
+            							requiredMessage="Please provide password."/> 	<h:message for="password" styleClass="form-control"  />
+            	<h:outputLabel>Register as a:</h:outputLabel><h:selectOneMenu value="#{clientReg.role}" id="role" styleClass="form-control" >
+>>>>>>> new update commit
    						<f:selectItem itemValue="manager" itemLabel="Manager" />
    						<f:selectItem itemValue="client" itemLabel="client" />
    						</h:selectOneMenu>
@@ -70,7 +100,11 @@
    				
             							
 				<h:inputHidden  value="#{clientReg.balance}" id = "balance" />
+<<<<<<< HEAD
 				<h:outputLabel /> <h:commandButton value="Signup" styleClass="save" action="#{clientController.regClient(clientReg)}"/>
+=======
+				<h:outputLabel /> <h:commandButton value="Signup"  action="#{clientController.regClient(clientReg)}" styleClass="btn btn-success btn-login-submit"/>
+>>>>>>> new update commit
 			
 			
 			</h:panelGrid>

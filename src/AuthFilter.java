@@ -10,7 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+<<<<<<< HEAD
 @WebFilter(filterName = "AuthFilter", urlPatterns = { "*.xhtml" })
+=======
+@WebFilter(filterName = "AuthFilter", urlPatterns = { "/faces/addWatch.xhtml","/faces/selectManager.xhtml","/faces/sell.xhtml","/faces/purchase.xhtml","/faces/requestStock.xhtml","/faces/managerPurchase.xhtml","/faces/adminHome.xhtml","/faces/approveManager.xhtml","/faces/clientHome.xhtml","/faces/editProfile.xhtml","/faces/historyAndAccount.xhtml","/faces/managerHome.xhtml","/faces/purchase.xhtml"})
+>>>>>>> new update commit
 public class AuthFilter implements Filter {
 
 	public AuthFilter() {

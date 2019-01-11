@@ -24,6 +24,10 @@ public class ClientController {
 	private List<ClientReg> clients3;
 	//private List<LoginCheck> login;
 	private ClientDbUtil clientDbUtil;
+<<<<<<< HEAD
+=======
+	private ClientReg clientReg;
+>>>>>>> new update commit
 	private Logger logger = Logger.getLogger(getClass().getName());
 	
 	
@@ -34,6 +38,10 @@ public class ClientController {
 		//login = new ArrayList<>();
 		
 		clientDbUtil = ClientDbUtil.getInstance();
+<<<<<<< HEAD
+=======
+		clientReg = ClientReg.getInstance();
+>>>>>>> new update commit
 	}
 	
 	public List<ClientReg> getClient() {
@@ -88,7 +96,11 @@ public class ClientController {
 		
 		try {
 			
+<<<<<<< HEAD
 			clients3 = clientDbUtil.showClient();
+=======
+			//clients3 = clientDbUtil.showClient();
+>>>>>>> new update commit
 			
 			
 			// get clients from database
@@ -203,6 +215,35 @@ public String reqStock(Double bal, String cUsername) {
 			
 	return "clientHome.xhtml";
 }	
+<<<<<<< HEAD
+=======
+
+public String sellStock(Double bal, String cUsername) {
+
+	//logger.info("updating clients: " + theClient);
+	 System.out.println("controller" +bal);
+	 System.out.println("controller" +cUsername);
+	
+	
+	try {
+		
+		// update clients in the database
+		ClientReg clients = clientDbUtil.sellStock(bal, cUsername);
+		
+	} catch (Exception exc) {
+		// send this to server logs
+		logger.log(Level.SEVERE, "Error loading client:" + bal, exc);
+		
+		// add error message for JSF page
+		addErrorMessage(exc);
+		
+		return null;
+	}
+			
+	return "clientHome.xhtml";
+}	
+
+>>>>>>> new update commit
 		public String rejectClient(int clientId) {
 			System.out.println(clientId);
 			logger.info("loading clients: " + clientId);
@@ -292,6 +333,7 @@ public String selectManager(int mId, String cUsername) {
 		return "list-Client?faces-redirect=true";
 	}
 	
+<<<<<<< HEAD
 	public String loadClient3(ClientReg theClient) {
 		logger.info("Adding Client: " + theClient);
 		//System.out.println(clientName);
@@ -299,6 +341,16 @@ public String selectManager(int mId, String cUsername) {
 			// get clients from database
 			clientDbUtil.getClient3(theClient);
 			//ClientReg clients3 = (ClientReg) clientDbUtil.getClient3(clientName);
+=======
+	public String loadClient3() {
+		//logger.info(");
+		//System.out.println(clientName);
+		System.out.println("load client 3");
+		try {
+			// get clients from database
+			//clientDbUtil.getClient3(theClient);
+		//	ClientReg clients3 = (ClientReg) clientDbUtil.getClient3();
+>>>>>>> new update commit
 			
 			// put in the request attribute ... so we can use it on the form page
 			//ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();		
@@ -307,6 +359,17 @@ public String selectManager(int mId, String cUsername) {
 			//requestMap.put("clients", clients3);	
 			
 			//clients3 = clientDbUtil.getClient3(clientName);
+<<<<<<< HEAD
+=======
+			//List<ClientReg> clients3 = ClientReg.getClient3();
+			//System.out.println("checkkkkk" clients3.);
+			//requestMap.put("clients", clients3);
+			ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();		
+
+			Map<String, Object> requestMap = externalContext.getRequestMap();
+			requestMap.put("clients3", clients3);
+			
+>>>>>>> new update commit
 			
 		} catch (Exception exc) {
 			// send this to server logs
@@ -319,6 +382,14 @@ public String selectManager(int mId, String cUsername) {
 			}
 		return "historyAndAccount.xhtml";
 		}
+<<<<<<< HEAD
+=======
+private void clients3() {
+		// TODO Auto-generated method stub
+		
+	}
+
+>>>>>>> new update commit
 public String loadClient(String clientId) {
 		
 		logger.info("loading clients: " + clientId);

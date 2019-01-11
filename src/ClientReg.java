@@ -2,12 +2,20 @@
 
 import java.io.IOException;
 import java.sql.Connection;
+<<<<<<< HEAD
+=======
+import java.sql.Connection;
+>>>>>>> new update commit
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+<<<<<<< HEAD
+=======
+import java.util.List;
+>>>>>>> new update commit
 import java.util.Map;
 
 import javax.faces.bean.SessionScoped;
@@ -22,12 +30,20 @@ import session.SessionUtils;
 @ManagedBean(name="clientReg",eager=true)
 @SessionScoped
 public class ClientReg {
+<<<<<<< HEAD
+=======
+	private static Map<String,Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap(); 
+>>>>>>> new update commit
 
 	private int id;
 	private String firstName;
 	private String lastName;
 	private String email;
+<<<<<<< HEAD
 	private String username;
+=======
+	private static String username;
+>>>>>>> new update commit
 	private String password;
 	private String role;
 	private  String dbuserName;
@@ -40,12 +56,63 @@ public class ClientReg {
 	private Double bal;
 	private String purchasedBy;
 	private Date date;
+<<<<<<< HEAD
 	
 
 
 	
 
 
+=======
+	public ArrayList<ClientReg> client3;
+	
+	
+	
+
+
+
+public ArrayList getClient3() throws Exception {
+	client3=getClient_333();
+		return client3;
+	}
+
+
+
+	public void setClient3(ArrayList client3) {
+		this.client3 = client3;
+	}
+
+
+
+//public ArrayList<> Client333(){
+//		
+//		Connection myConn = null;
+//		Statement myStmt = null;
+//		ResultSet myRs = null;
+//		try{
+//			demo= new ArrayList<clientReg>(); 
+//			ClientReg clientReg = new ClientReg();
+//			myConn = DataConnection.getConnection();
+//    System.out.println("username in client3="+username);
+//			String sql = "select stock_symbol, purchasedBy, price, accountBalance, date, qty from history where user_name='"+ username + "'";
+//
+//			myStmt = myConn.createStatement();
+//			myRs = myStmt.executeQuery(sql);
+//			while(myRs.next())
+//			{
+//				clientReg.setStockSymbol(myRs.getString("stock_symbol"));
+//				
+//				demo.add(clientReg);
+//			}
+//		}catch (Exception e) {
+//			// TODO: handle exception
+//		}
+//		return demo;
+//		}
+//
+//	
+
+>>>>>>> new update commit
 	public String getStockSymbol() {
 		return stockSymbol;
 	}
@@ -177,6 +244,14 @@ public class ClientReg {
 
 	
 	
+<<<<<<< HEAD
+=======
+	public ClientReg(String stockSymbol2, String purchasedBy2, Double price2, Double balance2, Date date2, int qty2) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+>>>>>>> new update commit
 	public String getRole() {
 		return role;
 	}
@@ -401,6 +476,7 @@ public String checkValidUser() throws Exception
 }
 		
 	 
+<<<<<<< HEAD
 /*	public String validateUser() throws Exception {
 		// boolean valid = ClientDbUtil.validateLogin(username, password);
 		validateLogin(username, password, role);
@@ -412,6 +488,8 @@ public String checkValidUser() throws Exception
 				 FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_WARN, "Incorrect Username and Passowrd. Please enter correct username and Password",""));
 		            return "login";
 	    }} */
+=======
+>>>>>>> new update commit
 	private static void close(Connection theConn, Statement theStmt) {
 		close(theConn, theStmt, null);
 	}
@@ -453,4 +531,84 @@ public String checkValidUser() throws Exception
 	      session.invalidate();
 	      return "login.xhtml";
 	}*/
+<<<<<<< HEAD
+=======
+
+
+	public static ClientReg getInstance() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	ArrayList demo;
+
+	public ArrayList getClient_333()  throws Exception {
+		
+		Connection myConn = null;
+		Statement myStmt = null;
+		ResultSet myRs = null;
+		System.out.println("get client 3 method----->>" +username);
+		try {
+			this.client3 = new ArrayList<ClientReg>(); 
+			//ClientReg clientReg = new ClientReg();
+			myConn = DataConnection.getConnection();
+
+			String sql = "select stock_symbol, purchasedBy, price, accountBalance, date, qty from history where user_name='"+ username+"'";
+        	myStmt = myConn.createStatement();
+			myRs = myStmt.executeQuery(sql);
+			while (myRs.next()) {
+			// set params
+				//int id = myRs.getInt("id");
+			    ClientReg cr=new ClientReg();
+				
+				String stockSymbol = myRs.getString(1);
+				System.out.println("1:" +stockSymbol);
+				//myStmt.setString(1, theClient.getFirstName());
+				cr.setStockSymbol(myRs.getString("stock_symbol"));
+				cr.setQty(myRs.getInt("qty"));
+				cr.setPrice(myRs.getDouble("price"));
+				cr.setPurchasedBy(myRs.getString("purchasedBy"));
+				cr.setBal(myRs.getDouble("accountBalance"));
+				cr.setDate(myRs.getDate("date"));
+				
+				String PurchasedBy = myRs.getString(2);
+				System.out.println("2:" +PurchasedBy);
+				
+			Double Price = myRs.getDouble(3);
+				System.out.println("3:" +PurchasedBy);
+				
+				Double Balance = myRs.getDouble(4);
+				System.out.println("4:" +Balance);
+				
+				Date Date = myRs.getDate(5);
+				System.out.println("5:" +Date);
+				
+				int Qty = myRs.getInt(6);
+				System.out.println("6:" +Qty);
+				
+			//myStmt.setString(7, theClient.getFlag());
+			
+			
+				
+				//clientReg = new ClientReg(stockSymbol, PurchasedBy, Price,
+						//Balance, Date, Qty);
+				client3.add(cr);
+		
+			}
+			
+			return this.client3;		
+		}
+		finally {
+			close (myConn, myStmt, myRs);
+		}
+		
+
+
+	}
+
+	
+
+>>>>>>> new update commit
 }

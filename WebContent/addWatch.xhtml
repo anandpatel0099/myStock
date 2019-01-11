@@ -21,6 +21,7 @@
         <link rel="stylesheet" href="css/style.css" ></link>
     </head>
     <body>
+<<<<<<< HEAD
     
 	<div class="well">
                 <legend>Search Data</legend>
@@ -29,6 +30,13 @@
 
      
         <p>Login Successful! #{clientReg.username}</p>
+=======
+    <h:form>
+    <div id="container">
+
+     
+        
+>>>>>>> new update commit
         
                  
          <div>
@@ -36,16 +44,42 @@
         
         
 	</div> </div></h:form>
+<<<<<<< HEAD
+=======
+	<div class="well">
+                <legend>Search Data</legend>
+ 
+>>>>>>> new update commit
                 <div class="row">
 
                     <h:form>
                         <label for="sel1">Stock: </label>
+<<<<<<< HEAD
                         <h:selectOneMenu id="symbol" value="#{stockApiBean.selectedSymbol}">
                             <f:selectItems value="#{stockApiBean.availableSymbols}" />
                         </h:selectOneMenu>
 
                        
                         <h:commandButton value="addWatch" action="#{stockApiBean.timeseries}" styleClass="btn btn-success" />
+=======
+                        <h:selectOneMenu id="symbol" value="#{reqStockHist.selectedSymbol}">
+                            <f:selectItems value="#{reqStockHist.availableSymbols}" />
+                        </h:selectOneMenu> <label for="sel1">Interval: </label>
+                        <h:selectOneMenu id="interval" value="#{reqStockHist.selectedInterval}">
+                            <f:selectItems value="#{stockApiBean.availableIntervals}" />
+                        </h:selectOneMenu>
+                        <br />
+                        <h:commandButton value="Get Data" action="#{reqStockHist.timeseries}" styleClass="btn btn-success" />
+
+                       
+                        <h:panelGroup rendered="#{not empty reqStockHist.table1Markup}">
+                    <h:outputText value="#{reqStockHist.table1Markup}" escape="false" styleClass="preformatted" />
+                </h:panelGroup>
+
+                <h:panelGroup rendered="#{not empty reqStockHist.table2Markup}">
+                    <h:outputText value="#{reqStockHist.table2Markup}" escape="false" styleClass="preformatted" />
+                </h:panelGroup>
+>>>>>>> new update commit
                         
                     </h:form>
                 </div>

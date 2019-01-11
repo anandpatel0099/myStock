@@ -47,7 +47,11 @@
                        <h:outputLabel>Enter Amount:</h:outputLabel> <h:inputText value="#{clientReg.balance}" id="balance" 
 									required="true"
             							requiredMessage="Please provide amount"/> 	<h:message for="balance" />
+<<<<<<< HEAD
                         <h:commandButton value="Request" action="#{clientController.reqStock(clientReg.balance, clientReg.username)}"/>
+=======
+                        <h:commandButton value="Transfer" action="#{clientController.reqStock(clientReg.balance, clientReg.username)}"/>
+>>>>>>> new update commit
                         
                         
                     </h:form>

@@ -7,6 +7,13 @@
 	
 
 <h:head>
+<<<<<<< HEAD
+=======
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"></link>
+
+        <!-- Custom styles for this template -->
+        <link rel="stylesheet" href="css/style.css" ></link>
+>>>>>>> new update commit
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <script type="text/javascript" src="scripts/jquery-3.2.1.min.js"></script>
         <script type="text/javascript"/>
@@ -36,13 +43,22 @@
 	
 	
 	<div id="container">
+<<<<<<< HEAD
 		<h3>login</h3>
+=======
+		
+>>>>>>> new update commit
 
 		
 		<h:messages globalOnly="true" />
 
 		
+<<<<<<< HEAD
 		<h:form id="form" style="margin-top: 11px;" >
+=======
+		<h:form id="form" class="form-signin" >
+		<h2 class="form-signin-heading">Login</h2>
+>>>>>>> new update commit
 			<h:panelGrid columns="3">
 			
 				
@@ -50,6 +66,7 @@
             	
             	<h:outputLabel>Username:</h:outputLabel> <h:inputText value="#{clientReg.username}" id="username" 
 									required="true"
+<<<<<<< HEAD
             				requiredMessage="Please provide username"/> 	<h:message for="username" />
             	
             	<h:outputLabel>password:</h:outputLabel> <h:inputSecret value="#{clientReg.password}" id="password" 
@@ -67,6 +84,25 @@
 
 		<div style="clear: both;"></div>
 		<h:outputLabel>Not Registerd?</h:outputLabel> <a href = "reg-Client.xhtml"> Please Signup</a>
+=======
+            				requiredMessage="Please provide username" styleClass="form-control"/> 	<h:message for="username" />
+            	
+            	<h:outputLabel>password:</h:outputLabel> <h:inputSecret value="#{clientReg.password}" id="password" 
+									required="true"
+            							requiredMessage="Please provide password." styleClass="form-control"/> 	<h:message for="password" />
+            	
+            							
+				
+				<h:outputLabel /> <h:commandButton value="Login"   action="#{clientReg.checkValidUser}" styleClass="btn btn-success btn-login-submit"/>
+			
+			
+			</h:panelGrid>
+		<div style="clear: both;"></div>
+		<h:outputLabel styleClass="text-align:center;">Not Registerd?</h:outputLabel> <a href = "faces/reg-Client.xhtml" styleClass="text-align:center;"> Please Signup</a>
+		</h:form>
+
+		
+>>>>>>> new update commit
 		
 
 	</div>	

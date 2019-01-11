@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
-        <title>Purchase Stock</title>
+        <title>Sell Stock</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
         <!-- Bootstrap core CSS -->
@@ -49,11 +49,7 @@
                         <ul class="list-group">
                             <li class="list-group-item text-muted">User Tasks</li>
                             
-<<<<<<< HEAD
-                            <li class="list-group-item text-right"><span class="pull-left"><strong>Eamil:</strong></span> #{clientReg.email}</li>
-=======
                             <li class="list-group-item text-right"><span class="pull-left"><strong>Email:</strong></span> #{clientReg.email}</li>
->>>>>>> new update commit
                             <li class="list-group-item text-right"><span class="pull-left"><strong>User name</strong></span> #{clientReg.username}</li>
                         </ul>
 
@@ -80,7 +76,7 @@
                           
                            <!-- amount of stock -->
                             Amount: <h:inputText binding="#{amt}" id="amt" styleClass="form-control amt" value="#{stockApiBean.amt}" required="true"/><br />
-                            <h:commandButton styleClass="btn btn-success btn-login-submit" value="Purchase" action="#{stockApiBean.createDbRecord(clientReg.username, purchaseSymbol.value, purchasePrice.value, qty.value, amt.value)}"/>
+                            <h:commandButton styleClass="btn btn-success btn-login-submit" value="sell" action="#{stockApiBean.sellStock(clientReg.username, purchaseSymbol.value, purchasePrice.value, qty.value, amt.value)}"/>
                         </h:form>
                     </div>
                 </div>

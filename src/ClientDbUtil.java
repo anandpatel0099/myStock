@@ -98,15 +98,40 @@ System.out.println(client.getDbrole());;
 		}
 		
 	}
+<<<<<<< HEAD
 	public void getClient3(ClientReg theClient)  throws Exception {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 
+=======
+	public List<ClientReg> getClient3()  throws Exception {
+		
+		List<ClientReg> clients3 = new ArrayList<>();
+		Connection myConn = null;
+		Statement myStmt = null;
+		ResultSet myRs = null;
+		
+		//String client = new ClientReg().getUsername();
+		//System.out.println("get client 3---" +client);
+		
+		ClientReg clients = new ClientReg();
+		String username=clients.getUsername();
+		
+		//ClientReg client=new ClientReg();
+		//System.out.println(client.getDbrole());
+		//String username=client.getUsername();
+		System.out.println("get client 3 method" +username);
+
+			
+
+			
+>>>>>>> new update commit
 		try {
 			myConn = getConnection();
 
 			String sql = "select * from history where user_name=?";
 
+<<<<<<< HEAD
 			myStmt = myConn.prepareStatement(sql);
 
 			// set params
@@ -130,6 +155,42 @@ System.out.println(client.getDbrole());;
 			close (myConn, myStmt);
 		}
 		
+=======
+			myStmt = myConn.createStatement();
+			myRs = myStmt.executeQuery(sql);
+			while (myRs.next()) {
+			// set params
+				//int id = myRs.getInt("id");
+				String stockSymbol = myRs.getString("stock_symbol");
+				String PurchasedBy = myRs.getString("purchasedBy");
+				Double Price = myRs.getDouble("price");
+				Double Balance = myRs.getDouble("accountBalance");
+				Date Date = myRs.getDate("date");
+				int Qty = myRs.getInt("qty");
+				System.out.println("get client1" +Qty);
+				
+			//myStmt.setString(7, theClient.getFlag());
+			
+			
+			
+				ClientReg tempClient = new ClientReg(stockSymbol, PurchasedBy, Price,
+						Balance, Date, Qty);
+				sessionMap.put("Clients3", tempClient);  
+				System.out.println(tempClient.getFirstName());
+			//myStmt.execute();	
+		
+				System.out.println(tempClient.getFirstName());
+			}
+			
+			return clients3;		
+		}
+		finally {
+			close (myConn, myStmt, myRs);
+		}
+		
+	
+	
+>>>>>>> new update commit
 	}
 	/*public static boolean validateLogin(String username, String password, String role) throws Exception {
 		
@@ -601,7 +662,11 @@ public ClientReg reqStock (Double bal, String cUsername) throws Exception {
 	      rs.next();
 	      Double oldBal=rs.getDouble(1);
 	      String manager=rs.getString(2);
+<<<<<<< HEAD
 	      Double newbal=oldBal-bal;
+=======
+	      Double newbal=oldBal-(bal*0.05);
+>>>>>>> new update commit
 	      System.out.println("show balance" +newbal);
 	      System.out.println("show balance" +manager);
 	      
@@ -618,6 +683,11 @@ public ClientReg reqStock (Double bal, String cUsername) throws Exception {
 	      rs2.next();
 	      Double ManageroldBal=rs.getDouble(1);
 	      Double mangerNewBal=ManageroldBal+bal;
+<<<<<<< HEAD
+=======
+	    //  Double account=bal*0.05;
+	      
+>>>>>>> new update commit
 	      
 	      System.out.println("show balance manger" +mangerNewBal);
 	      statement.executeUpdate("update login "
@@ -656,6 +726,84 @@ public ClientReg reqStock (Double bal, String cUsername) throws Exception {
 	
 }
 	
+<<<<<<< HEAD
+=======
+public ClientReg sellStock (Double bal, String cUsername) throws Exception {
+
+	System.out.println("show balance" +bal);
+	System.out.println("show user---" +cUsername);
+	Connection myConn = null;
+	Connection conn = null;
+	conn = DataConnection.getConnection();
+	Statement statement = conn.createStatement();
+	PreparedStatement myStmt = null;
+	PreparedStatement myStmt2 = null;
+
+	try {
+		myConn = getConnection();
+		myStmt = myConn.prepareStatement("select  balance, user_name from login where manager ='" + cUsername + "'");
+		ResultSet rs = myStmt.executeQuery();
+	      rs.next();
+	      Double oldBal=rs.getDouble(1);
+	      String manager=rs.getString(2);
+	      Double newbal=oldBal-bal;
+	      System.out.println("show balance" +newbal);
+	      System.out.println("show balance" +manager);
+	      
+	      statement.executeUpdate("update login "
+					+ " set balance='" + newbal + "'"
+					+ " where user_name='" + cUsername + "'");
+	      
+	      statement.executeUpdate("INSERT INTO `history` ( `user_name`, `accountBalance`, `transferToManager`, `clientName`) "
+                  + "VALUES ('" + cUsername + "','" + newbal + "','" + bal + "','" + manager + "')");
+	      
+	      
+	      myStmt2 = myConn.prepareStatement("select balance from login where user_name ='" + manager + "'");
+	      ResultSet rs2 = myStmt2.executeQuery();
+	      rs2.next();
+	      Double ManageroldBal=rs.getDouble(1);
+	      Double mangerNewBal=ManageroldBal+bal;
+	    //  Double account=bal*0.05;
+	      
+	      
+	      System.out.println("show balance manger" +mangerNewBal);
+	      statement.executeUpdate("update login "
+					+ " set balance='" + mangerNewBal + "'"
+					+ " where user_name='" + manager + "'");
+	      
+	     
+	      
+	      
+	      statement.executeUpdate("INSERT INTO `history` ( `user_name`, `accountBalance`, `transferByClient`, `manName`) "
+                  + "VALUES ('" + manager + "','" + mangerNewBal + "','" + (-1*bal) + "','" + cUsername + "')");
+          
+	      
+		/*String sql2 = "update login "
+					+ " set first_name=?, last_name=?, email=?"
+					+ " where user_name=?";
+
+		myStmt3 = myConn.prepareStatement(sql1);
+		Double req = myStmt3.get("id");
+		
+        
+        ResultSet rs2 = myStmt2.executeQuery();
+      rs2.next();
+		// set params
+		myStmt.setString(1, theClient.getFirstName());
+		myStmt.setString(2, theClient.getLastName());
+		myStmt.setString(3, theClient.getEmail());
+		myStmt.setString(4, theClient.getUsername());
+		*/
+		myStmt.execute();
+	}
+	finally {
+		close (myConn, myStmt);
+	}
+	return null;
+	
+}
+	
+>>>>>>> new update commit
 	
 	private static Connection getConnection() throws Exception {
 
